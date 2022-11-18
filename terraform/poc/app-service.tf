@@ -16,7 +16,7 @@ module "app-sevrice" {
   application_insights_name      = "poc-centric-ae-app-insights"
   application_insights_type      = "web"
   application_insights_enabled   = true
-  service_name                   = "poc-centric-ae-service"
+  service_name                   = "poc-centric-pasview-ae-service"
   site_config = {
     minimum_tls_version = "1.2"
     always_on           = "false"
@@ -34,4 +34,3 @@ module "app-sevrice" {
     azurerm_resource_group.this_rg
   ]
 }
-
