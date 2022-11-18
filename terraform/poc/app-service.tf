@@ -1,8 +1,8 @@
 module "app-sevrice" {
-  source = "../../modules/azure-app-service" 
+  source = "../../modules/azure-app-service"
 
-  create_resource_group          = true
-  resource_group_name            = var.rg_name
+  create_resource_group          = false
+  resource_group_name            = azurerm_resource_group.this_rg.name
   location                       = var.location
   create_log_analytics_workspace = true
   log_analytics_workspace_name   = "poc-centric-ae-log-workspace"
@@ -30,5 +30,8 @@ module "app-sevrice" {
     InstrumentationEngine_EXTENSION_VERSION = "disabled"
   }
   app_service_vnet_integration_subnet_id = data.azurerm_subnet.webapp.id
+  depends_on = [
+    azurerm_resource_group.this_rg
+  ]
 }
 
