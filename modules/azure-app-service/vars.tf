@@ -122,3 +122,9 @@ variable "app_service_vnet_integration_subnet_id" {
 #   type        = number
 #   default     = 1
 # }
+
+variable "enable_https" {
+  description = "Enable https only for this App Service"
+  type        = bool
+  default     = true
+}

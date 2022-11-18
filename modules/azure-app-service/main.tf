@@ -110,6 +110,7 @@ resource "azurerm_windows_web_app" "this_service" {
   location            = local.location
   resource_group_name = local.resource_group_name
   service_plan_id = local.service_plan_id
+  https_only              = var.enable_https
   # virtual_network_subnet_id = var.app_service_vnet_integration_subnet_id
   
   dynamic "site_config" {

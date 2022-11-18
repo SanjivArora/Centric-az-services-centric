@@ -1,7 +1,7 @@
 data "azurerm_client_config" "current" {}
 
 resource "azurerm_key_vault" "this_vault" {
-  name                            = "poc-centric-ae-vault"
+  name                            = "poc-centric-vault-ae-1"
   location                        = azurerm_resource_group.this_rg.location
   resource_group_name             = azurerm_resource_group.this_rg.name
   enabled_for_disk_encryption     = true
