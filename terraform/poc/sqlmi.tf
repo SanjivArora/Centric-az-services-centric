@@ -117,7 +117,7 @@ resource "azurerm_network_security_rule" "deny_all_outbound" {
 }
 
 resource "azurerm_subnet_network_security_group_association" "sqlmi_association" {
-  subnet_id                 = azurerm_subnet.data.id
+  subnet_id                 = data.azurerm_subnet.sqlmi.id
   network_security_group_id = azurerm_network_security_group.sql_nsg.id
 }
 
@@ -136,7 +136,7 @@ resource "azurerm_mssql_managed_instance" "this_sqlmi" {
   license_type       = "BasePrice"
   sku_name           = "GP_Gen5"
   storage_size_in_gb = 32
-  subnet_id          = azurerm_subnet.data.id
+  subnet_id          = data.azurerm_subnet.sqlmi.id
   vcores             = 4
 
   administrator_login          = "sqladministrator"

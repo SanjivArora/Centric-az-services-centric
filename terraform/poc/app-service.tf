@@ -1,5 +1,5 @@
 module "app-sevrice" {
-  source = "./modules/azure-app-service"
+  source = "../../modules/azure-app-service" 
 
   create_resource_group          = true
   resource_group_name            = var.rg_name

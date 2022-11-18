@@ -4,7 +4,7 @@ resource "azurerm_resource_group" "this_rg" {
 }
 
 resource "azurerm_resource_group" "sqlmi_rg" {
-  name     = poc-centirc-sqlmi-ae-rg
+  name     = "poc-centirc-sqlmi-ae-rg"
   location = var.location
 }
 
