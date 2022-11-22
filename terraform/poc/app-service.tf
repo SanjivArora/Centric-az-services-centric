@@ -22,7 +22,7 @@ module "app-sevrice" {
     always_on           = "true"
     application_stack = {
       current_stack  = "dotnet"
-      dotnet_version = "v4.0"
+      dotnet_version = "v6.0"
     }
   }
   app_settings = {
