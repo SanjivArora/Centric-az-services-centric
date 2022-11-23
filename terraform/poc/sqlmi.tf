@@ -128,6 +128,11 @@ resource "azurerm_route_table" "sqlmi_rt" {
   disable_bgp_route_propagation = false
 }
 
+resource "azurerm_subnet_route_table_association" "rt_association" {
+  subnet_id      = data.azurerm_subnet.sqlmi.id
+  route_table_id = azurerm_route_table.sqlmi_rt.id
+}
+
 resource "azurerm_mssql_managed_instance" "this_sqlmi" {
   name                = "poc-centric-sqlmi-ae-1"
   resource_group_name = azurerm_resource_group.sqlmi_rg.name
@@ -151,6 +156,7 @@ resource "azurerm_mssql_managed_instance" "this_sqlmi" {
   }
   depends_on = [
     azurerm_route_table.sqlmi_rt,
-    azurerm_subnet_network_security_group_association.sqlmi_association
+    azurerm_subnet_network_security_group_association.sqlmi_association,
+    azurerm_subnet_route_table_association.rt_association
   ]
 }
