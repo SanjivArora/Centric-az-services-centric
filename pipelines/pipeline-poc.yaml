@@ -108,14 +108,12 @@ stages:
               testRunTitle: Checkov Scan
               failTaskOnFailedTests: false
               publishRunAttachments: true
-  - stage: deploy
+  - stage: approval
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
     dependsOn: 
       - plan
       - compliance
-    displayName: Deploy
-    variables:
-      - group: ARM
+    displayName: Validation
     jobs:
     - job: waitForValidation
       displayName: Wait for external validation
@@ -129,6 +127,16 @@ stages:
             sharan.nagulapalli@healthalliance.co.nz
           instructions: 'Please validate the terraform plan and resume'
           onTimeout: 'resume'
+  - stage: deploy
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+    dependsOn: 
+      - plan
+      - compliance
+      - approval
+    displayName: Deploy
+    variables:
+      - group: ARM
+    jobs:  
     - job: apply
       displayName: Deploy Terraform plan
       steps:
