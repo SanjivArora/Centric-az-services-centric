@@ -33,7 +33,7 @@ module "app-sevrice" {
     WEBSITE_RUN_FROM_PACKAGE = "1"
     minTlsVersion = "1.2"
   }
-  app_service_vnet_integration_subnet_id = data.azurerm_subnet.webapp.id
+  app_service_vnet_integration_subnet_id = data.azurerm_subnet.appservice.id
   depends_on = [
     azurerm_resource_group.this_rg
   ]
@@ -74,7 +74,7 @@ module "app-sevrice-pasview-frontend" {
     WEBSITE_RUN_FROM_PACKAGE = "1"
     minTlsVersion = "1.2"
   }
-  app_service_vnet_integration_subnet_id = data.azurerm_subnet.webapp.id
+  app_service_vnet_integration_subnet_id = data.azurerm_subnet.appservice.id
   depends_on = [
     azurerm_resource_group.this_rg
   ]
@@ -115,7 +115,7 @@ module "app-sevrice-mailer-frontend" {
     WEBSITE_RUN_FROM_PACKAGE = "1"
     minTlsVersion = "1.2"
   }
-  app_service_vnet_integration_subnet_id = data.azurerm_subnet.webapp.id
+  app_service_vnet_integration_subnet_id = data.azurerm_subnet.appservice.id
   depends_on = [
     azurerm_resource_group.this_rg
   ]
@@ -156,7 +156,7 @@ module "app-sevrice-mailer-backend" {
     WEBSITE_RUN_FROM_PACKAGE = "1"
     minTlsVersion = "1.2"
   }
-  app_service_vnet_integration_subnet_id = data.azurerm_subnet.webapp.id
+  app_service_vnet_integration_subnet_id = data.azurerm_subnet.appservice.id
   depends_on = [
     azurerm_resource_group.this_rg
   ]
@@ -197,7 +197,7 @@ module "app-sevrice-iam" {
     WEBSITE_RUN_FROM_PACKAGE = "1"
     minTlsVersion = "1.2"
   }
-  app_service_vnet_integration_subnet_id = data.azurerm_subnet.webapp.id
+  app_service_vnet_integration_subnet_id = data.azurerm_subnet.appservice.id
   depends_on = [
     azurerm_resource_group.this_rg
   ]
